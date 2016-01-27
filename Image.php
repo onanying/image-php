@@ -23,7 +23,7 @@ class Image
 	protected $create_thumb = FALSE;  // 是否创建缩略图
 	protected $thumb_marker = '_thumb';  // 缩略图后缀
 
-	public function __construct( $props = array() ) 
+	public function __construct($props = array()) 
 	{
 		if (count($props) > 0) {
 			$this->initialize($props);
@@ -31,14 +31,14 @@ class Image
 	}
 
 	// 初始化配置
-	public function initialize( $props )
+	public function initialize($props)
 	{
 		$this->clear();  // 清除之前的配置
-		$this->source_image = !isset($props['source_image'])?$this->source_image:$props['source_image'];
-		$this->width = !isset($props['width'])?$this->width:$props['width'];
-		$this->height = !isset($props['height'])?$this->height:$props['height'];
-		$this->create_thumb = !isset($props['create_thumb'])?$this->create_thumb:$props['create_thumb'];
-		$this->thumb_marker = !isset($props['thumb_marker'])?$this->thumb_marker:$props['thumb_marker'];
+		$this->source_image = !isset($props['source_image']) ? $this->source_image : $props['source_image'];
+		$this->width = !isset($props['width']) ? $this->width : $props['width'];
+		$this->height = !isset($props['height']) ? $this->height : $props['height'];
+		$this->create_thumb = !isset($props['create_thumb']) ? $this->create_thumb : $props['create_thumb'];
+		$this->thumb_marker = !isset($props['thumb_marker']) ? $this->thumb_marker : $props['thumb_marker'];
 	}
 
 	// 清除配置
@@ -85,16 +85,16 @@ class Image
 	    $height_ratio = $target_height / $source_height;
 
 	    // 源图宽高均小于要设置的值
-	    if($width_ratio>=1 && $height_ratio>=1){
+	    if($width_ratio >= 1 && $height_ratio >= 1){
 	    	$target_image = $source_image;
 	    }else{	    
 		    // 根据缩放倍率小的宽或者高缩放
 		    if($width_ratio < $height_ratio){
 		        $zoom_width = $target_width;
-		        $zoom_height = $source_height*($target_width/$source_width);
+		        $zoom_height = $source_height * ($target_width / $source_width);
 		    }else{
 		        $zoom_height = $target_height;
-		        $zoom_width = $source_width*($target_height/$source_height);
+		        $zoom_width = $source_width * ($target_height / $source_height);
 		    }
 
 		    // 声明图片资源
@@ -181,7 +181,7 @@ class Image
 		imagecopyresampled($target_image, $cropped_image, 0, 0, 0, 0, $target_width, $target_height, $cropped_width, $cropped_height);
 
 	    // 图片地址为url
-	    if(strpos($source_path, 'http')!==false){
+	    if(strpos($source_path, 'http') !== false){
 	    	imagejpeg($target_image, $_SERVER['DOCUMENT_ROOT'].'/tmp.jpg');
 	    }else{
 			if($this->create_thumb){
@@ -195,6 +195,5 @@ class Image
 		imagedestroy($target_image);
 		imagedestroy($cropped_image);
 	}
-
 
 }
