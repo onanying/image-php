@@ -22,7 +22,7 @@ $config['source_image'] = '/www/img/4533070d32960cd35e726ddb715a1eac.jpg';
 $config['width'] = 200;
 $config['height'] = 200;
 $img->initialize($config);
-$this->image->crop();  // 剪裁
+$img->crop();  // 剪裁
 ```
 
 ### 创建缩略图
@@ -35,7 +35,7 @@ $config['width'] = 200;
 $config['height'] = 200;
 $config['create_thumb'] = true;
 $img->initialize($config);
-$this->image->crop();  // 剪裁
+$img->crop();  // 剪裁
 ```
 
 ### 等比压缩图片并创建缩略图
