@@ -55,7 +55,7 @@ $config['source_image'] = '/www/img/4533070d32960cd35e726ddb715a1eac.jpg';
 $config['width'] = 600;
 $config['height'] = 450;
 $config['create_thumb'] = true;
-$config['thumb_marker'] = '_small';
+$config['thumb_marker'] = '_small';  // 默认为'_thumb'
 $img->initialize($config);
 $img->crop();  // 剪裁
 ```
