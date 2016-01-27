@@ -80,43 +80,43 @@ class Image
 				$source_image = imagecreatefromjpeg($source_path);  // 兼容app, 许多app上传的图片无mime信息
 				break;
 		}
-	    
-	    $width_ratio = $target_width / $source_width;
-	    $height_ratio = $target_height / $source_height;
+		
+		$width_ratio = $target_width / $source_width;
+		$height_ratio = $target_height / $source_height;
 
-	    // 源图宽高均小于要设置的值
-	    if($width_ratio >= 1 && $height_ratio >= 1){
-	    	$target_image = $source_image;
-	    }else{	    
-		    // 根据缩放倍率小的宽或者高缩放
-		    if($width_ratio < $height_ratio){
-		        $zoom_width = $target_width;
-		        $zoom_height = $source_height * ($target_width / $source_width);
-		    }else{
-		        $zoom_height = $target_height;
-		        $zoom_width = $source_width * ($target_height / $source_height);
-		    }
+		// 源图宽高均小于要设置的值
+		if($width_ratio >= 1 && $height_ratio >= 1){
+			$target_image = $source_image;
+		}else{	    
+			// 根据缩放倍率小的宽或者高缩放
+			if($width_ratio < $height_ratio){
+				$zoom_width = $target_width;
+				$zoom_height = $source_height * ($target_width / $source_width);
+			}else{
+				$zoom_height = $target_height;
+				$zoom_width = $source_width * ($target_height / $source_height);
+			}
 
-		    // 声明图片资源
-		    $target_image = imagecreatetruecolor($zoom_width, $zoom_height);
+			// 声明图片资源
+			$target_image = imagecreatetruecolor($zoom_width, $zoom_height);
 
-		    // 缩放
-		    imagecopyresampled($target_image, $source_image, 0, 0, 0, 0, $zoom_width, $zoom_height, $source_width, $source_height);
-	    }
+			// 缩放
+			imagecopyresampled($target_image, $source_image, 0, 0, 0, 0, $zoom_width, $zoom_height, $source_width, $source_height);
+		}
 
-	    // 图片地址为url
-	    if(strpos($source_path, 'http')!==false){
-	    	imagejpeg($target_image, $_SERVER['DOCUMENT_ROOT'].'/tmp.jpg');
-	    }else{
+		// 图片地址为url
+		if(strpos($source_path, 'http')!==false){
+			imagejpeg($target_image, $_SERVER['DOCUMENT_ROOT'].'/tmp.jpg');
+		}else{
 			if($this->create_thumb){
 				$source_path = str_replace('.', $this->thumb_marker.'.', $source_path);
 			}
-	    	imagejpeg($target_image, $source_path);
-	    }
-	    
-	    //销毁资源
-	    imagedestroy($source_image);
-	    @imagedestroy($target_image);
+			imagejpeg($target_image, $source_path);
+		}
+		
+		//销毁资源
+		imagedestroy($source_image);
+		@imagedestroy($target_image);
 	}
 
 	// 居中剪裁
@@ -180,10 +180,10 @@ class Image
 		// 缩放
 		imagecopyresampled($target_image, $cropped_image, 0, 0, 0, 0, $target_width, $target_height, $cropped_width, $cropped_height);
 
-	    // 图片地址为url
-	    if(strpos($source_path, 'http') !== false){
-	    	imagejpeg($target_image, $_SERVER['DOCUMENT_ROOT'].'/tmp.jpg');
-	    }else{
+		// 图片地址为url
+		if(strpos($source_path, 'http') !== false){
+			imagejpeg($target_image, $_SERVER['DOCUMENT_ROOT'].'/tmp.jpg');
+		}else{
 			if($this->create_thumb){
 				$source_path = str_replace('.', $this->thumb_marker.'.', $source_path);
 			}
