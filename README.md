@@ -13,7 +13,7 @@
 
 项目中常用的一些使用场景的范例
 
-	**生成用户头像**
+生成用户头像
 
 ```php
 $img = new Image();
@@ -25,7 +25,7 @@ $img->initialize($config);
 $this->image->crop();  // 剪裁
 ```
 
-	**创建缩略图**
+创建缩略图
 
 ```php
 $img = new Image();
@@ -38,7 +38,7 @@ $img->initialize($config);
 $this->image->crop();  // 剪裁
 ```
 
-	**等比压缩图片并创建缩略图**
+等比压缩图片并创建缩略图
 
 ```php
 $img = new Image();
