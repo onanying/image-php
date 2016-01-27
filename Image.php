@@ -14,7 +14,8 @@
  * 
  */
 
-class Image {
+class Image 
+{
 
 	protected $source_image = '';  // 源文件路径
 	protected $width = '';  // 要设置的宽度
@@ -22,14 +23,16 @@ class Image {
 	protected $create_thumb = FALSE;  // 是否创建缩略图
 	protected $thumb_marker = '_thumb';  // 缩略图后缀
 
-	public function __construct( $props = array() ) {
+	public function __construct( $props = array() ) 
+	{
 		if (count($props) > 0) {
 			$this->initialize($props);
 		}
 	}
 
 	// 初始化配置
-	public function initialize( $props ){
+	public function initialize( $props )
+	{
 		$this->clear();  // 清除之前的配置
 		$this->source_image = !isset($props['source_image'])?$this->source_image:$props['source_image'];
 		$this->width = !isset($props['width'])?$this->width:$props['width'];
@@ -39,7 +42,8 @@ class Image {
 	}
 
 	// 清除配置
-	public function clear(){
+	public function clear()
+	{
 		$this->source_image = '';
 		$this->width = '';
 		$this->height = '';
@@ -48,7 +52,8 @@ class Image {
 	}
 
 	// 等比缩放
-	public function resize($value=''){
+	public function resize($value='')
+	{
 		$source_path = $this->source_image;
 		$target_width = $this->width;
 		$target_height = $this->height;
@@ -115,7 +120,8 @@ class Image {
 	}
 
 	// 居中剪裁
-	public function crop(){
+	public function crop()
+	{
 		$source_path = $this->source_image;
 		$target_width = $this->width;
 		$target_height = $this->height;
