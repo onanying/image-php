@@ -17,28 +17,26 @@
 class Image 
 {
 
-    protected $source_image = '';  // 源文件路径
-    protected $width = '';  // 要设置的宽度
-    protected $height = '';  // 要设置的高度
-    protected $create_thumb = FALSE;  // 是否创建缩略图
-    protected $thumb_marker = '_thumb';  // 缩略图后缀
+    protected $source_image = '';               // 源文件路径
+    protected $width = '';                      // 要设置的宽度
+    protected $height = '';                     // 要设置的高度
+    protected $create_thumb = '';               // 是否创建缩略图
+    protected $thumb_marker = '';               // 缩略图后缀
 
-    public function __construct($props = array()) 
+    public function __construct($config = array()) 
     {
-        if (count($props) > 0) {
-            $this->initialize($props);
-        }
+        empty($config) OR $this->initialize($config);
     }
 
     // 初始化配置
-    public function initialize($props)
+    public function initialize($config)
     {
         $this->clear();  // 清除之前的配置
-        $this->source_image = !isset($props['source_image']) ? $this->source_image : $props['source_image'];
-        $this->width = !isset($props['width']) ? $this->width : $props['width'];
-        $this->height = !isset($props['height']) ? $this->height : $props['height'];
-        $this->create_thumb = !isset($props['create_thumb']) ? $this->create_thumb : $props['create_thumb'];
-        $this->thumb_marker = !isset($props['thumb_marker']) ? $this->thumb_marker : $props['thumb_marker'];
+        foreach ($config as $key => $val) {
+            if (isset($this->$key)) {
+                $this->$key = $val;
+            }
+        }
     }
 
     // 清除配置
@@ -52,7 +50,7 @@ class Image
     }
 
     // 等比缩放
-    public function resize($value='')
+    public function resize()
     {
         $source_path = $this->source_image;
         $target_width = $this->width;
