@@ -60,20 +60,16 @@ class Image
         $source_height = $source_info[1];
         $source_mime   = $source_info['mime'];
 
-        switch ($source_mime)
-        {
+        switch ($source_mime) {
             case 'image/gif':
                 $source_image = imagecreatefromgif($source_path);
                 break;
-
             case 'image/jpeg':
                 $source_image = imagecreatefromjpeg($source_path);
                 break;
-
             case 'image/png':
                 $source_image = imagecreatefrompng($source_path);
                 break;
-
             default:
                 $source_image = imagecreatefromjpeg($source_path);  // 兼容app, 许多app上传的图片无mime信息
                 break;
@@ -150,20 +146,16 @@ class Image
             $source_y = 0;
         }
 
-        switch ($source_mime)
-        {
+        switch ($source_mime) {
             case 'image/gif':
                 $source_image = imagecreatefromgif($source_path);
                 break;
-
             case 'image/jpeg':
                 $source_image = imagecreatefromjpeg($source_path);
                 break;
-
             case 'image/png':
                 $source_image = imagecreatefrompng($source_path);
                 break;
-
             default:
                 $source_image = imagecreatefromjpeg($source_path);  // 兼容app, 许多app上传的图片无mime信息
                 break;
