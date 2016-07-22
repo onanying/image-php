@@ -9,7 +9,7 @@
 	3. 创建缩略图
 	4. 如果操作网络图片, 会在根目录生成"tmp.jpg" (用于测试)
 
-## 生成用户头像 (sample 1)
+## 生成用户头像 (Sample 1)
 
 ```php
 $img = new Image();
@@ -21,7 +21,7 @@ $img->initialize($config);
 $img->crop();  // 剪裁
 ```
 
-## 创建缩略图 (sample 2)
+## 创建缩略图 (Sample 2)
 
 ```php
 $img = new Image();
@@ -34,7 +34,7 @@ $img->initialize($config);
 $img->crop();  // 剪裁
 ```
 
-## 等比压缩图片并创建缩略图 (sample 3)
+## 等比压缩图片并创建缩略图 (Sample 3)
 
 ```php
 $img = new Image();
